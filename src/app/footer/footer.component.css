@@ -1,0 +1,26 @@
+#footer-wrapper p {
+    margin: 10px 0;
+}
+#footer-wrapper a {
+    font-weight: 300;
+    color: #777;
+    padding: 20px;
+}
+
+#footer-wrapper a:hover,
+#footer-wrapper a:focus {
+    color: #43abf1;
+    border-color: #43abf1;
+    text-decoration: none;
+}
+#footer-wrapper a span {
+    color: #43aaf1;
+    font-weight: 500;
+}
+
+.container {
+    padding-top: 15px;
+    background-color: #f5f5f5;
+    padding: 20px;
+    width: 100%;
+}
