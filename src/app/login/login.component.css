@@ -1,0 +1,40 @@
+#content-wrapper {
+    width: 100%;
+    height: calc(100% - 60px);
+    display: table;
+    margin-top: 100px;
+}
+#content-wrapper a.logo {
+    font-size: 50px;
+    color: #777;
+    margin-bottom: 30px;
+    display: block;
+}
+#content-wrapper a.logo b {
+    color: #00B0FF;
+}
+#content-wrapper a.logo:hover,
+#content-wrapper a.logo:focus {
+    text-decoration: none;
+}
+#content-wrapper .login-wrapper {
+    display: table-cell;
+    vertical-align: middle;
+}
+.login-form {
+    max-width: 560px;
+    margin: 0 auto;
+}
+.login-form input {
+    height: 50px;
+    font-size: 14px;
+}
+.login-form .submit-btn {
+    font-size: 16px;
+    font-weight: 300;
+    padding: 16px;
+    margin-top: 20px;
+}
+.btn {
+    background-color: #00B0FF;
+}
