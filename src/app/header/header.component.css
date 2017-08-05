@@ -1,0 +1,71 @@
+.navbar-default {
+    box-shadow: none;
+    background-color: transparent;
+    position: absolute;
+    width: 100%;
+}
+#content-wrapper, #content-wrapper section {
+    height: 100%;
+    width: 100%;
+}
+#content-wrapper section {
+    display: table;
+}
+#content-wrapper section .content {
+    display: table-cell;
+    vertical-align: middle;
+}
+#content-wrapper section h1 {
+    font-size: 44px;
+    line-height: 1.2;
+}
+#content-wrapper section a {
+    font-weight: 500;
+}
+#content-wrapper section p {
+    margin-bottom: 25px;
+}
+#content-wrapper section p, #content-wrapper section a {
+    font-size: 18px;
+}
+#footer-wrapper {
+    background-color: #1a1a1a;
+    font-size: 12px;
+    padding: 45px 0;
+}
+#footer-wrapper p {
+    margin: 3px;
+    color: #ddd;
+}
+#footer-wrapper ul {
+    margin: 0 0 15px;
+    font-weight: 500;
+    font-size: 13px;
+}
+#footer-wrapper ul a {
+    color: #ddd;
+}
+#footer-wrapper ul a:focus,
+#footer-wrapper ul a:hover {
+    color: #fff;
+    text-decoration: none;
+}
+#footer-wrapper .sns-links ul {
+    font-size: 20px;
+}
+.fa {
+    padding-right: 5px;
+}
+
+.navbar {
+    z-index: 9999;
+    background-color: #FFF;
+}
+
+.navbar-toggle:hover{
+    background-color: #00B0FF; 
+}
+
+.navbar-brand {
+    color: #00B0FF;
+}
