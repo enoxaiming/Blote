@@ -1,0 +1,143 @@
+.top-content {
+  background: #fafafa;
+  margin-top: 54px;
+  border-bottom: 1px solid #e0e0e0;
+  min-height: 90vh;
+  padding-top: 30px;
+}
+
+.top-content-grid {
+    z-index: 3;
+    position: relative;
+}
+
+h1.title {
+    font-size: 38px;
+    font-weight: normal;
+    letter-spacing: -1px;
+    color: #263238;
+    text-align: center;
+    word-break:keep-all;
+    white-space:-moz-pre-wrap;
+    white-space:-pre-wrap;
+    white-space:-o-pre-wrap;
+    word-wrap:break-word;
+}
+
+.intro-column {
+    display: table !important;
+    width: 100%;
+}
+
+.intro-column-wrapper {
+    display: table-cell;
+    vertical-align: middle;
+    height: 350px;
+    width: 100%;
+}
+
+button,
+button::after {
+  -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+  -o-transition: all 0.3s;
+    transition: all 0.3s;
+}
+
+.btn-1 {
+  background: none;
+  border: 3px solid #00B0FF;
+  border-radius: 5px;
+  color: #00B0FF;
+  display: block;
+  font-size: 1.6em;
+  font-weight: bold;
+  margin: 1em auto;
+  padding: 0.5em 1em;
+  position: relative;
+  text-transform: uppercase;
+  text-align: center;
+
+}
+
+.btn-1::before,
+.btn-1::after {
+  background: #00B0FF;
+  content: '';
+  position: absolute;
+  z-index: -1;
+}
+
+.btn-1:hover {
+  color: #FFF;
+}
+
+/* BUTTON 1 */
+.btn-1::after {
+  height: 0;
+  left: 0;
+  top: 0;
+  width: 100%;
+}
+
+.btn-1:hover:after {
+  height: 100%;
+}
+
+label {
+    margin-left: 5px;
+}
+
+.form-group {
+    margin-top: 20px;
+}
+
+#add {
+    background: none;
+    border: 3px solid #00B0FF;
+    border-radius: 5px;
+    color: #00B0FF;
+    font-size: 0.8em;
+    font-weight: bold;
+    padding: 0.3em 1em;
+    text-transform: uppercase;
+    text-align: center;
+    display: inline;
+}
+
+#add:hover {
+    color: white;
+}
+
+#delete {
+    background: none;
+    border: 3px solid #00B0FF;
+    border-radius: 5px;
+    color: #00B0FF;
+    font-size: 0.8em;
+    font-weight: bold;
+    padding: 0.3em 1em;
+    text-transform: uppercase;
+    text-align: center;
+    display: inline;
+}
+
+#delete:hover {
+    color: white;
+}
+
+#submit {
+    background: none;
+  border: 3px solid #00B0FF;
+  border-radius: 5px;
+  color: #00B0FF;
+  display: block;
+  font-size: 1.6em;
+  font-weight: bold;
+  margin: 1em auto;
+  padding: 0.5em 1em;
+  position: relative;
+  text-transform: uppercase;
+  margin-top: 40px;
+  text-align: center;
+}
