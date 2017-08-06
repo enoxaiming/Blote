@@ -30,14 +30,14 @@ export const router: Routes = [
         path: 'survey/:prefix', component: SurveyComponent
     },
     {
+        path: 'create', component: CreateComponent
+    },
+    {
         path: 'home', component: MonitorComponent,
         canActivate:[AuthGuard]
     },
     {
         path: 'result', component: ResultComponent,
         canActivate:[AuthGuard]
-    },
-    {
-        path: 'create', component: CreateComponent
     }
 ];

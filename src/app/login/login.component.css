@@ -28,6 +28,7 @@
 .login-form input {
     height: 50px;
     font-size: 14px;
+    border-radius: 0 !important;
 }
 .login-form .submit-btn {
     font-size: 16px;
