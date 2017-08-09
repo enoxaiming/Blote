@@ -25,6 +25,9 @@ import { CreateComponent } from './create/create.component';
 //Animation Part
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 
+//Auth
+import { FacebookModule } from 'ngx-facebook';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -43,7 +46,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
     BrowserModule,
     RouterModule.forRoot(router),
     HttpModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    FacebookModule.forRoot()
   ],
   providers: [CookieService,AuthGuard,AuthService],
   bootstrap: [AppComponent]

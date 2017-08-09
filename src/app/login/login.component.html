@@ -12,7 +12,7 @@
               <input type="password" class="form-control input-lg" id="password-input" placeholder="비밀번호를 입력하세요">
             </li>
             <li>
-              <div class="checkArea" style="text-align: right"><input type="checkbox" id="remember" name="witnessMe" class="check" value="1" checked="checked" /><label for="remember"> 로그인 상태 유지</label></div>
+              <div class="checkArea" style="text-align: right"><input type="checkbox" id="remember" class="check" value="1" checked="checked" /><label for="remember"> 로그인 상태 유지</label></div>
             </li>
             <li>
               <button class="fa btn submit-btn btn-primary btn-lg btn-block">로그인하기</button>
@@ -23,7 +23,7 @@
               </div>
             </li>
             <li>
-              <button class="btn-facebook btn submit-btn btn-primary btn-lg btn-block" (click)="signIn('facebook')">
+              <button class="btn-facebook btn submit-btn btn-primary btn-lg btn-block" (click)="this.auth.fbLogin()">
               <i class="fa fa-facebook-official"></i>
               페이스북으로 로그인
               </button>
