@@ -4,9 +4,32 @@
       <a class="logo" href="#"><b>Blote</b>.me</a>
       <form class="login-form">
         <div class="form-group button-group-vertical">
-          <input type="email" class="form-control input-lg" id="email-input" placeholder="이메일을 입력하세요">
-          <input type="password" class="form-control input-lg" id="password-input" placeholder="비밀번호를 입력하세요">
-          <button class="btn submit-btn btn-primary btn-lg btn-block">로그인하기</button>
+          <ul>
+            <li>
+              <input type="email" class="form-control input-lg" id="email-input" placeholder="이메일을 입력하세요">
+            </li>
+            <li>
+              <input type="password" class="form-control input-lg" id="password-input" placeholder="비밀번호를 입력하세요">
+            </li>
+            <li>
+              <div class="checkArea" style="text-align: right"><input type="checkbox" id="remember" name="witnessMe" class="check" value="1" checked="checked" /><label for="remember"> 로그인 상태 유지</label></div>
+            </li>
+            <li>
+              <button class="fa btn submit-btn btn-primary btn-lg btn-block">로그인하기</button>
+            </li>
+            <li>
+              <div class="line-text">
+                <h6 class="line-center"> 또는 </h6>
+              </div>
+            </li>
+            <li>
+              <button class="btn-facebook btn submit-btn btn-primary btn-lg btn-block" (click)="signIn('facebook')">
+              <i class="fa fa-facebook-official"></i>
+              페이스북으로 로그인
+              </button>
+            </li>
+          </ul>
+
         </div>
       </form>
     </div>

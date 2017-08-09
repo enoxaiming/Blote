@@ -26,16 +26,76 @@
     margin: 0 auto;
 }
 .login-form input {
-    height: 50px;
     font-size: 14px;
     border-radius: 0 !important;
 }
 .login-form .submit-btn {
     font-size: 16px;
-    font-weight: 300;
+    font-weight: 500;
     padding: 16px;
     margin-top: 20px;
 }
 .btn {
     background-color: #00B0FF;
+        color: white !important;
+}
+
+.input-lg {
+    margin-bottom: 10px;
+}
+
+ul {
+    list-style: none;
+    padding : 0;
+    margin-bottom: 20px;
+}
+
+input.check {
+    width: 14px;
+    height: 14px;
+    margin-right: 4px;
+    border: 0;
+    /*vertical-align: middle;*/
+    margin: 0 5px;
+}
+
+label {
+    display: inline-block;
+    font-size: 13px;
+    color: #888;
+    letter-spacing: -1px;
+    padding-top: 4px;
+    margin: 0 0 0 1px;
+}
+
+.line-text {
+    margin-top: 15px;
+    color: #9AA0A2;
+    text-align: center;
+    position: relative;
+    z-index: 100;
+    display: block;
+    box-sizing: inherit;
+}
+
+.line-text:after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 2.85714rem;
+    right: 2.85714rem;
+    border-top: solid 0.07143rem #EBEBEB;
+    z-index: -1;
+}
+
+.line-center {
+    padding: 0 1.42857rem;
+    margin: 0.71429rem 0;
+    background: #fff;
+    display: inline-block;
+}
+
+.btn-facebook {
+    background-color: #5071b8 !important;
+    border-color: #5071b8 !important;
 }
