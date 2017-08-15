@@ -21,7 +21,8 @@ export class MainComponent implements OnInit {
   ngOnInit() {
     $('.top-content').particleground({
             dotColor: '#CFD8DC',
-            lineColor: '#CFD8DC'
+            lineColor: '#CFD8DC',
+            directionX: 'center'
         });
     //this.test = new web3().version.api;
   }

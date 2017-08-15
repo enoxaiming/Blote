@@ -28,6 +28,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 //Auth
 import { FacebookModule } from 'ngx-facebook';
 
+//For ngModule
+import { FormsModule } from '@angular/forms';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -47,7 +50,8 @@ import { FacebookModule } from 'ngx-facebook';
     RouterModule.forRoot(router),
     HttpModule,
     BrowserAnimationsModule,
-    FacebookModule.forRoot()
+    FacebookModule.forRoot(),
+    FormsModule
   ],
   providers: [CookieService,AuthGuard,AuthService],
   bootstrap: [AppComponent]

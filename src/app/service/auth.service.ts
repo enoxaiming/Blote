@@ -22,38 +22,6 @@ export class AuthService {
         });
     }
 
-    login(email: String, password: String, autoLogin: boolean) {
-        let url = "http://ec2-54-190-7-146.us-west-2.compute.amazonaws.com:5000/api/v1/auth";
-        let body = "email=" + email + "&password=" + password;
-        let headers = new Headers({
-            'Content-Type': 'application/x-www-form-urlencoded',
-            'Accept': 'application/json'
-        });
-        let options = new RequestOptions({
-            headers: headers
-        });
-
-        this.http.post(url, body, options)
-            .map(res => res.json())
-            .subscribe(
-            res => {
-                console.log("Response : " + res.data.token);
-
-                this.cookie.setCookie('id_token', res.data.token, 1);
-                this.cookie.setCookie('user_id', res.data.user_id, 1);
-                this.cookie.setCookie('type', "local", 1);
-
-                location.href = '/home';
-            },
-
-            error => {
-                if (error.json().code == 400) {
-                    alert("일치하는 정보가 없습니다.");
-                }
-            }
-            );
-    }
-
     fbLogin() {
         this.fb.login()
             .then((response: LoginResponse) => {
@@ -66,6 +34,66 @@ export class AuthService {
             .catch((error: any) => console.error(error));
     }
 
+    signup(name:String,email:String,pwd:String,org:String) {
+        let url = "http://dudgns0507.cafe24.com:3000/users/signup";
+        let body = {
+            "name" : name,
+            "id" : email,
+            "pw" : pwd,
+            "org": org
+        }
+        let headers = new Headers({
+            'Content-Type': 'application/json'
+        });
+
+        let options = new RequestOptions({
+            headers: headers
+        });
+
+        this.http.post(url, body, options)
+            .map(res => res.json())
+            .subscribe(
+            res => {
+                console.log("성공");
+                console.log("Response : " + res);
+                location.href='';
+            },
+
+            error => {
+                console.log("오류");
+                console.log(error);
+            }
+            );
+    }
+
+    login(email:String,pwd:String) {
+        let url = "http://dudgns0507.cafe24.com:3000/users/signin";
+        let body = {
+            "id" : email,
+            "pw" : pwd
+        }
+        let headers = new Headers({
+            'Content-Type': 'application/json'
+        });
+
+        let options = new RequestOptions({
+            headers: headers
+        });
+
+        this.http.post(url, body, options)
+            .map(res => res.json())
+            .subscribe(
+            res => {
+                console.log("성공");
+                console.log("Response : " + res);
+            },
+
+            error => {
+                console.log("오류");
+                console.log(error);
+            }
+            );
+    }
 
 
     loggedIn() {

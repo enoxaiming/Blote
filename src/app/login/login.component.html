@@ -6,16 +6,18 @@
         <div class="form-group button-group-vertical">
           <ul>
             <li>
-              <input type="email" class="form-control input-lg" id="email-input" placeholder="이메일을 입력하세요">
+              <input type="email" name="email" class="form-control input-lg" id="email-input" placeholder="이메일을 입력하세요" [(ngModel)]="email"
+                required>
             </li>
             <li>
-              <input type="password" class="form-control input-lg" id="password-input" placeholder="비밀번호를 입력하세요">
+              <input type="password" name="pw" class="form-control input-lg" id="password-input" placeholder="비밀번호를 입력하세요" [(ngModel)]="pwd"
+                required>
             </li>
             <li>
               <div class="checkArea" style="text-align: right"><input type="checkbox" id="remember" class="check" value="1" checked="checked" /><label for="remember"> 로그인 상태 유지</label></div>
             </li>
             <li>
-              <button class="fa btn submit-btn btn-primary btn-lg btn-block">로그인하기</button>
+              <button class="fa btn submit-btn btn-primary btn-lg btn-block" (click)="login();">로그인하기</button>
             </li>
             <li>
               <div class="line-text">
@@ -23,7 +25,11 @@
               </div>
             </li>
             <li>
-              <button class="btn-facebook btn submit-btn btn-primary btn-lg btn-block" (click)="this.auth.fbLogin()">
+              <button class="btn-facebook btn submit-btn btn-primary btn-lg btn-block" (click)="facebookLogin()">
+              <i class="fa fa-facebook-official"></i>
+              페이스북으로 로그인
+              </button>
+              <button class="btn-facebook btn submit-btn btn-primary btn-lg btn-block" (click)="getProfile()">
               <i class="fa fa-facebook-official"></i>
               페이스북으로 로그인
               </button>

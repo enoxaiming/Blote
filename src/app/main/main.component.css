@@ -35,6 +35,7 @@ h1.title {
     width: 100%;
 }
 
+
 button,
 button::after {
   -webkit-transition: all 0.3s;
