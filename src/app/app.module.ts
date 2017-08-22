@@ -16,6 +16,8 @@ import {router} from "./app.router";
 import { CookieService } from './service/cookie.service';
 import { AuthGuard } from './service/auth-guard.service';
 import { AuthService } from './service/auth.service';
+import { VoteService } from './service/vote.service';
+
 import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
 import { AboutComponent } from './about/about.component';
@@ -30,6 +32,8 @@ import { FacebookModule } from 'ngx-facebook';
 
 //For ngModule
 import { FormsModule } from '@angular/forms';
+import { FullComponent } from './full/full.component';
+import { SimpleComponent } from './simple/simple.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +47,9 @@ import { FormsModule } from '@angular/forms';
     SignupComponent,
     AboutComponent,
     SurveyComponent,
-    CreateComponent
+    CreateComponent,
+    FullComponent,
+    SimpleComponent
   ],
   imports: [
     BrowserModule,
@@ -53,7 +59,7 @@ import { FormsModule } from '@angular/forms';
     FacebookModule.forRoot(),
     FormsModule
   ],
-  providers: [CookieService,AuthGuard,AuthService],
+  providers: [CookieService,AuthGuard,AuthService,VoteService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
