@@ -1,6 +1,5 @@
 .top-content {
   background: #fafafa;
-  margin-top: 54px;
   border-bottom: 1px solid #e0e0e0;
   min-height: 90vh;
   padding-top: 30px;
@@ -122,7 +121,7 @@ label {
     display: inline;
 }
 
-#delete:hover {
+#delete:hover,#submit:hover {
     color: white;
 }
 
