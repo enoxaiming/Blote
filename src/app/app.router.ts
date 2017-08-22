@@ -9,35 +9,50 @@ import {SurveyComponent} from './survey/survey.component';
 import {MonitorComponent} from './monitor/monitor.component';
 import {ResultComponent} from './result/result.component';
 import {CreateComponent} from './create/create.component';
+import {HeaderComponent} from './header/header.component';
+import {FooterComponent} from './footer/footer.component';
+
+import {FullComponent} from './full/full.component';
+import {SimpleComponent} from './simple/simple.component';
 
 import {AuthGuard} from './service/auth-guard.service';
 
 
 export const router: Routes = [
     {
-        path: '', component: MainComponent
+        path: '', component: FullComponent,
+        children: [
+            {
+                path:'login', component:LoginComponent
+            },
+            {
+                path:'', component:MainComponent
+            },
+            {
+                path: 'signup', component: SignupComponent
+            },
+            {
+                path: 'about', component: AboutComponent
+            },
+            {
+                path: 'home', component: MonitorComponent,
+                canActivate:[AuthGuard]
+            },
+            {
+                path: 'result', component: ResultComponent,
+                canActivate:[AuthGuard]
+            }
+        ]
     },
     {
-        path: 'login', component: LoginComponent
-    },
-    {
-        path: 'signup', component: SignupComponent
-    },
-    {
-        path: 'about', component: AboutComponent
-    },
-    {
-        path: 'survey/:prefix', component: SurveyComponent
-    },
-    {
-        path: 'create', component: CreateComponent
-    },
-    {
-        path: 'home', component: MonitorComponent,
-        canActivate:[AuthGuard]
-    },
-    {
-        path: 'result', component: ResultComponent,
-        canActivate:[AuthGuard]
+        path: 'survey', component: SimpleComponent,
+        children: [
+            {
+                path: 'create', component: CreateComponent
+            },
+            {
+                path:'', component:SurveyComponent
+            }
+        ]
     }
 ];
