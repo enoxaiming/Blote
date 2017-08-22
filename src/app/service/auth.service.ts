@@ -34,12 +34,12 @@ export class AuthService {
             .catch((error: any) => console.error(error));
     }
 
-    signup(name:String,email:String,pwd:String,org:String) {
-        let url = "http://dudgns0507.cafe24.com:3000/users/signup";
+    signup(name: String, email: String, pwd: String, org: String) {
+        let url = "http://dudgns05072.cafe24.com:3000/users/signup";
         let body = {
-            "name" : name,
-            "id" : email,
-            "pw" : pwd,
+            "name": name,
+            "id": email,
+            "pw": pwd,
             "org": org
         }
         let headers = new Headers({
@@ -56,21 +56,24 @@ export class AuthService {
             res => {
                 console.log("성공");
                 console.log("Response : " + res);
-                location.href='';
+                location.href = '';
             },
 
             error => {
-                console.log("오류");
+                alert("계정이 이미 존재합니다.");
                 console.log(error);
+                if(error.status.code == 400) {
+                    alert(error.status.message);
+                }
             }
             );
     }
 
-    login(email:String,pwd:String) {
-        let url = "http://dudgns0507.cafe24.com:3000/users/signin";
+    login(email: String, pwd: String) {
+        let url = "http://dudgns05072.cafe24.com:3000/users/signin";
         let body = {
-            "id" : email,
-            "pw" : pwd
+            "id": email,
+            "pw": pwd
         }
         let headers = new Headers({
             'Content-Type': 'application/json'
@@ -85,12 +88,14 @@ export class AuthService {
             .subscribe(
             res => {
                 console.log("성공");
-                console.log("Response : " + res);
+                console.log("Response : " + res.token);
+                location.href = '';
+                this.cookie.setCookie('id_token', res.token, 1);
             },
 
             error => {
                 console.log("오류");
-                console.log(error);
+                console.log(error.status);
             }
             );
     }
@@ -99,13 +104,10 @@ export class AuthService {
     loggedIn() {
         console.log('checking token!!');
 
-        //Default isValie = true
         let isValid: boolean = true;
 
-        //look for token
-        //var sessionToken = sessionStorage.getItem('id_token');
         var token = this.cookie.getCookie('type');
-        //Token Exist
+        
         if (token) {
             console.log("sessionLoggedIn");
         }
@@ -130,4 +132,5 @@ export class AuthService {
     private handleError(error) {
         console.error('Error processing action', error);
     }
+
 }

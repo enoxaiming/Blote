@@ -70,3 +70,46 @@
 .input-lg {
     border-radius: 0 !important;
 }
+
+.line-text {
+    margin-top: 15px;
+    color: #9AA0A2;
+    text-align: center;
+    position: relative;
+    z-index: 100;
+    display: block;
+    box-sizing: inherit;
+}
+
+.line-text:after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 2.85714rem;
+    right: 2.85714rem;
+    border-top: solid 0.07143rem #EBEBEB;
+    z-index: -1;
+}
+
+.line-center {
+    padding: 0 1.42857rem;
+    margin: 0.71429rem 0;
+    background: #fff;
+    display: inline-block;
+}
+
+.btn-facebook {
+    background-color: #5071b8 !important;
+    border-color: #5071b8 !important;
+}
+
+ul {
+    list-style: none;
+    padding : 0;
+    margin-bottom: 20px;
+}
+
+.login-form {
+    max-width: 560px;
+    margin: 0 auto;
+}
