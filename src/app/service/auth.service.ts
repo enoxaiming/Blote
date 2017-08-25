@@ -87,6 +87,7 @@ export class AuthService {
             .map(res => res.json())
             .subscribe(
             res => {
+                alert("성공");
                 console.log("성공");
                 console.log("Response : " + res.token);
                 location.href = '';
@@ -94,6 +95,7 @@ export class AuthService {
             },
 
             error => {
+                alert("실패");
                 console.log("오류");
                 console.log(error.status);
             }

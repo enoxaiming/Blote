@@ -14,9 +14,9 @@
         <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}"><a [routerLink]="['/about']" >About</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li *ngIf="!loggedIn"><a class="btn btn-primary-outline" href="/login"><i class="fa fa-sign-in" aria-hidden="true"></i>로그인</a></li>
-        <li *ngIf="!loggedIn"><a class="btn btn-primary-outline" href="/signup"><i class="fa fa-sign-in" aria-hidden="true"></i>회원가입</a></li>
-        <li *ngIf="loggedIn"><a class="btn btn-primary-outline" href="/home"><i class="fa fa-sign-in" aria-hidden="true"></i>내 투표로 가기</a></li>
+        <li *ngIf="!loggedIn"><a class="btn btn-primary-outline" [routerLink]="['/login']"><i class="fa fa-sign-in" aria-hidden="true"></i>로그인</a></li>
+        <li *ngIf="!loggedIn"><a class="btn btn-primary-outline" [routerLink]="['/signup']"><i class="fa fa-sign-in" aria-hidden="true"></i>회원가입</a></li>
+        <li *ngIf="loggedIn"><a class="btn btn-primary-outline" [routerLink]="['/home']"><i class="fa fa-sign-in" aria-hidden="true"></i>내 투표로 가기</a></li>
         <li *ngIf="loggedIn" (click)="logout()"><a class="btn btn-primary-outline" href="#"><i class="fa fa-sign-in" aria-hidden="true"></i>로그아웃</a></li>
       </ul>
     </div>

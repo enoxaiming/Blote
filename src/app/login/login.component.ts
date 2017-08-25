@@ -2,12 +2,17 @@ import { Component, OnInit } from '@angular/core';
 
 import {AuthService} from "../service/auth.service";
 
+import { fadeInAnimation } from '../_animation/index';
+
+
 import { FacebookService, LoginResponse, LoginOptions, UIResponse, UIParams, FBVideoComponent } from 'ngx-facebook';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.css'],
+  animations: [fadeInAnimation],
+  host:{'[@fadeInAnimation':''}
 })
 export class LoginComponent implements OnInit {
 

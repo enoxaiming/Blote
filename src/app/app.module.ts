@@ -25,7 +25,7 @@ import { SurveyComponent } from './survey/survey.component';
 import { CreateComponent } from './create/create.component';
 
 //Animation Part
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 //Auth
 import { FacebookModule } from 'ngx-facebook';

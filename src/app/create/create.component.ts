@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { DomSanitizer,SafeHtml } from '@angular/platform-browser'
+import { DomSanitizer,SafeHtml } from '@angular/platform-browser';
+import {VoteService} from '../service/vote.service';
 
 declare const $: any;
 
@@ -12,7 +13,7 @@ export class CreateComponent implements OnInit {
 
   _htmlText: string = "";
 
-  constructor(private sanitizer: DomSanitizer) { }
+  constructor(private sanitizer: DomSanitizer,private vote:VoteService) { }
 
   ngOnInit() {
 
@@ -32,4 +33,17 @@ export class CreateComponent implements OnInit {
     console.log(this._htmlText.length);
   }
 
+  create() {
+    
+  }
+
+}
+
+class Candidate {
+  name : String;
+  descript : String;
+  constructor(name,descript) {
+      this.name = name;
+      this.descript = descript;
+  }
 }
