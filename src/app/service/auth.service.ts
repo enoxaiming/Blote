@@ -42,6 +42,7 @@ export class AuthService {
             "pw": pwd,
             "org": org
         }
+        console.log(pwd);
         let headers = new Headers({
             'Content-Type': 'application/json'
         });

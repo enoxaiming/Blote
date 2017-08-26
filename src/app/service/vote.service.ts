@@ -47,16 +47,16 @@ export class VoteService {
             .map(res => res.json());
     }
 
-    createVote(name: String, description: String, capacity: number, candname:String[]) {
+    createVote(name: String, description: String, capacity: number, candname: String[]) {
         let url = "http://dudgns05072.cafe24.com:3000/votes";
-        let cand = "[";
+        
+        let cand = "";
         for (var i = 0; i < candname.length; i++) {
             cand += {
                 "name": candname[i],
                 "descript": ""
             }
         }
-        cand += "]";
 
         let body = {
             "name": name,
@@ -66,18 +66,69 @@ export class VoteService {
             "hasVerification": "true",
             "due": new Date()
         }
+        
+/*
+        let body = {
+            "name": "samplevote",
+            "descript": "description",
+            "capacity": "10",
 
+            "candidates": [{
+                "name": "candidate1",
+                "descript": "this is candidate"
+            },
+            {
+                "name": "candidate1",
+                "descript": "this is candidate"
+            },
+            {
+                "name": "candidate1",
+                "descript": "this is candidate"
+            }
+            ],
+            "hasVerification": "true", //has email verification or not
+            "due": "2017-08-13T05:58:44.700Z" //자바스크립트 date 객체를 넘기셈
+        }
+*/
+
+        //console.log(cand);
         console.log(body);
+
+        let headers = new Headers({
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5hbWUiOiJjaGFuZ2UiLCJpZCI6InRlc3RAZ21haWwuY29tIiwicGFzc3dvcmQiOiIxMjM0NTYiLCJvcmciOiJrZG1oIiwidmVyaWZpZWQiOmZhbHNlLCJjcmVhdGVkQXQiOiIyMDE3LTA4LTIyVDA3OjAzOjQ4LjAwMFoiLCJ1cGRhdGVkQXQiOiIyMDE3LTA4LTI0VDA3OjM0OjQ5LjAwMFoifSwiaWF0IjoxNTAzNzUwMTg0fQ.kWXfB0yXZuWYIJjluKG05PdPyrE6vuqwZCWEETgI_y8'
+        });
+
+        let options = new RequestOptions({
+            headers: headers
+        });
+
+        
+        this.http.post(url, body, options)
+        .map(res => res.json())
+        .subscribe(
+        res => {
+            alert("성공");
+            console.log(res);
+        },
+
+        error => {
+            alert("실패");
+            console.log("오류");
+            console.log(error);
+        }
+        );
+        
     }
 
     vote() {
-        
+
         const contract_obj = {
             abi: [{ "constant": false, "inputs": [], "name": "getCandidates", "outputs": [{ "name": "", "type": "bytes32[]" }], "payable": false, "type": "function" }, { "constant": false, "inputs": [], "name": "result", "outputs": [{ "name": "", "type": "uint8[]" }], "payable": false, "type": "function" }, { "constant": false, "inputs": [{ "name": "_candidates", "type": "bytes32[]" }], "name": "addCandidates", "outputs": [], "payable": true, "type": "function" }, { "constant": false, "inputs": [{ "name": "_no", "type": "uint8" }], "name": "vote", "outputs": [], "payable": false, "type": "function" }, { "inputs": [{ "name": "_secret", "type": "bytes32" }, { "name": "_candidates", "type": "bytes32[]" }], "payable": false, "type": "constructor" }],
             data: '0x60606040526000600860006101000a81548160ff021916908360ff1602179055506000600955341561003057600080fd5b6040516105f23803806105f2833981016040528080519060200190919080518201919050505b60008260008160001916905550600090505b81518160ff16101561014b576040805190810160405280838360ff1681518110151561009057fe5b90602001906020020151600019168152602001600060ff1681525060046000820151816000019060001916905560208201518160010160006101000a81548160ff021916908360ff1602179055509050506004600660008360ff1660ff168152602001908152602001600020600082015481600001906000191690556001820160009054906101000a900460ff168160010160006101000a81548160ff021916908360ff1602179055509050505b8080600101915050610068565b81516009819055505b5050505b61048b806101676000396000f30060606040526000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff16806306a49fce1461005f57806365372147146100ca5780636eab06c414610135578063b3f98adc14610184575b600080fd5b341561006a57600080fd5b6100726101aa565b6040518080602001828103825283818151815260200191508051906020019060200280838360005b838110156100b65780820151818401525b60208101905061009a565b505050509050019250505060405180910390f35b34156100d557600080fd5b6100dd610249565b6040518080602001828103825283818151815260200191508051906020019060200280838360005b838110156101215780820151818401525b602081019050610105565b505050509050019250505060405180910390f35b6101826004808035906020019082018035906020019080806020026020016040519081016040528093929190818152602001838360200280828437820191505050505050919050506102f9565b005b341561018f57600080fd5b6101a8600480803560ff169060200190919050506103e7565b005b6101b2610437565b6101ba610437565b60006009546040518059106101cc5750595b908082528060200260200182016040525b509150600090505b60095481101561024057600660008260ff1660ff16815260200190815260200160002060000154828281518110151561021a57fe5b9060200190602002019060001916908160001916815250505b80806001019150506101e5565b8192505b505090565b61025161044b565b61025961044b565b600060095460405180591061026b5750595b908082528060200260200182016040525b509150600090505b6009548160ff1610156102f057600660008260ff1660ff16815260200190815260200160002060010160009054906101000a900460ff16828260ff168151811015156102cc57fe5b9060200190602002019060ff16908160ff16815250505b8080600101915050610284565b8192505b505090565b60008090505b81518160ff1610156103e2576040805190810160405280838360ff1681518110151561032757fe5b90602001906020020151600019168152602001600060ff1681525060046000820151816000019060001916905560208201518160010160006101000a81548160ff021916908360ff1602179055509050506004600660008360ff1660ff168152602001908152602001600020600082015481600001906000191690556001820160009054906101000a900460ff168160010160006101000a81548160ff021916908360ff1602179055509050505b80806001019150506102ff565b5b5050565b600660008260ff1660ff168152602001908152602001600020600101600081819054906101000a900460ff168092919060010191906101000a81548160ff021916908360ff160217905550505b50565b602060405190810160405280600081525090565b6020604051908101604052806000815250905600a165627a7a72305820e3312f48537ef38acc4eefc705f8ccc42c782adc52615c92b2cf530f08fa57fd0029',
             gas: '4070716'
         };
-        
+
         let title = new web3().version.api;
 
         //var web3 = new web3();
@@ -115,6 +166,35 @@ export class VoteService {
         blote.result.call((err, result) => {
             console.log('result : ', result);
         })
-        
+
+    }
+
+    checkVote(key:String,token:String) {
+        let url = "http://dudgns05072.cafe24.com:3000/votes/"+key;
+        let body = {
+        }
+        let headers = new Headers({
+            'Content-Type': 'application/json',
+            'Authorization' : 'Bearer '+token
+        });
+
+        let options = new RequestOptions({
+            headers: headers
+        });
+
+        this.http.get(url, options)
+        .map(res => res.json())
+        .subscribe(
+        res => {
+            alert("성공");
+            console.log(res);
+        },
+
+        error => {
+            alert("실패");
+            console.log("오류");
+            console.log(error);
+        }
+        );
     }
 }

@@ -16,7 +16,7 @@ export class SignupComponent implements OnInit {
 
   private name : String;
   private email : String;
-  private password : String;
+  private pwd : String;
   private org : String;
 
   constructor(private auth:AuthService) { }
@@ -25,7 +25,7 @@ export class SignupComponent implements OnInit {
   }
 
   signup() {
-    this.auth.signup(this.name,this.email,this.password,this.org);
+    this.auth.signup(this.name,this.email,this.pwd,this.org);
   }
 
 }
