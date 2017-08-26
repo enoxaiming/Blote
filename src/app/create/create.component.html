@@ -5,21 +5,20 @@
                 <div class="intro-column-wrapper">
                     <div class="form-group">
                         <label>투표 명을 작성해주세요 <strong class="text-danger">*</strong></label>
-                        <input type="text" class="form-control input-lg" name="name" id="votename-input" placeholder="투표명 입력">
+                        <input type="text" class="form-control input-lg" name="name" id="votename-input" placeholder="투표명 입력" [(ngModel)]="votename">
                     </div>
                     <div class="form-group">
                         <label>투표에 대한 소개를 작성해주세요<strong class="text-danger">*</strong></label>
-                        <input type="text" class="form-control input-lg" name="name" id="votename-input" placeholder="투표 소개 입력">
+                        <input type="text" class="form-control input-lg" name="des" id="votedes-input" placeholder="투표 소개 입력" [(ngModel)]="votedes">
                     </div>
                     <div class="form-group">
                         <label>전체 투표자 수를 작성해주세요 (숫자로 작성해주세요) <strong class="text-danger">*</strong></label>
-                        <input type="number" class="form-control input-lg" name="name" id="votename-input" placeholder="ex) 35">
+                        <input type="number" class="form-control input-lg" name="count" id="votecount-input" placeholder="ex) 35" [(ngModel)]="voterange">
                     </div>
                     <div class="form-group">
                         <label>투표 보기를 작성해주세요 <strong class="text-danger">*</strong><button id="add" class="btn-1" (click)="addRow()">보기 추가하기</button><button id="delete" class="btn-1" (click)="deleteRow()">보기 제거하기</button></label>
-                        <input type="text" class="form-control input-lg" name="name" id="votename-input" placeholder="투표 보기 입력">
-                        <div [innerHtml]="htmlText">
-                            
+                        <div *ngFor="let number of item; let i = index;">
+                            <input type="text" class="form-control input-lg" name="bogi" placeholder="투표 보기 입력" [(ngModel)]="item[i]">
                         </div>
                     </div>
                     <button id="submit" class="btn-1" (click)="create();"><i class="arrow right icon"></i>투표 만들기</button>

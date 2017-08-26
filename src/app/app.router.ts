@@ -51,7 +51,7 @@ export const router: Routes = [
                 path: 'create', component: CreateComponent
             },
             {
-                path:'', component:SurveyComponent
+                path:':prefix', component:SurveyComponent
             }
         ]
     }

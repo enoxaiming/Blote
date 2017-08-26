@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 declare const $: any;
 
@@ -13,11 +14,16 @@ import { CookieService } from '../service/cookie.service';
 export class SurveyComponent implements OnInit {
 
   email: String;
-  code:String;
+  code: String;
   verifyHTML: String = "";
-  isActivated:boolean = false;
+  isActivated: boolean = false;
+  isAuth: boolean = false;
 
-  constructor(private vote: VoteService,private cookie:CookieService) { }
+  constructor(private vote: VoteService, private cookie: CookieService, private router: Router) {
+    router.events.subscribe((url: any) => console.log(url));
+
+    console.log("URL : " + router.url.slice(8));  // to print only key ex)iii
+  }
 
   ngOnInit() {
     $('.wrapper').particleground({
@@ -31,7 +37,7 @@ export class SurveyComponent implements OnInit {
     this.vote.mailCall(this.email).subscribe(
       res => {
         console.log(res);
-        if(res.status.code == 200) {
+        if (res.status.code == 200) {
           alert("이메일이 전송되었습니다.");
           this.isActivated = true;
         }
@@ -45,11 +51,11 @@ export class SurveyComponent implements OnInit {
   }
 
   verifyCode() {
-    this.vote.emailVerify(this.email,this.code).subscribe(
+    this.vote.emailVerify(this.email, this.code).subscribe(
       res => {
-        if(res.status.code == 200) {
+        if (res.status.code == 200) {
           //Key Saved.
-          this.cookie.setCookie('key',res.info.key,1);
+          this.cookie.setCookie('key', res.info.key, 1);
           alert("인증에 성공하였습니다.");
         }
         else {

@@ -47,13 +47,13 @@ export class VoteService {
             .map(res => res.json());
     }
 
-    createVote(name: String, description: String, capacity: number, candidates: Candidate[]) {
+    createVote(name: String, description: String, capacity: number, candname:String[]) {
         let url = "http://dudgns05072.cafe24.com:3000/votes";
         let cand = "[";
-        for (var i = 0; i < candidates.length; i++) {
+        for (var i = 0; i < candname.length; i++) {
             cand += {
-                "name": candidates[i].name,
-                "descript": candidates[i].descript
+                "name": candname[i],
+                "descript": ""
             }
         }
         cand += "]";
@@ -116,14 +116,5 @@ export class VoteService {
             console.log('result : ', result);
         })
         
-    }
-}
-
-class Candidate {
-    name: String;
-    descript: String;
-    constructor(name, descript) {
-        this.name = name;
-        this.descript = descript;
     }
 }

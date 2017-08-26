@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 
 import { fadeInAnimation } from '../_animation/index';
 
+import {VoteService} from '../service/vote.service';
+
 import * as web3 from 'Web3';
 
 declare const $ : any;
@@ -16,7 +18,7 @@ declare const $ : any;
 })
 export class MainComponent implements OnInit {
 
-  constructor() { }
+  constructor(private vote:VoteService) { }
 
   ngOnInit() {
     $('.top-content').particleground({
@@ -28,7 +30,9 @@ export class MainComponent implements OnInit {
   }
 
   about() {
-    location.href='/about';
+    this.vote.vote();
+    //var appUriScheme = "intent://#Intent;package=blote.org.bloteAndroid;scheme=callMyApp;end;";
+    //document.location.href = appUriScheme;
   }
   
 
