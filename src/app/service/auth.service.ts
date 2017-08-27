@@ -109,7 +109,7 @@ export class AuthService {
 
         let isValid: boolean = true;
 
-        var token = this.cookie.getCookie('type');
+        var token = this.cookie.getCookie('id_token');
         
         if (token) {
             console.log("sessionLoggedIn");

@@ -121,7 +121,7 @@ export class VoteService {
         
     }
 
-    vote() {
+    vote(contract_address:String,account_address:String,checked:number) {
 
         const contract_obj = {
             abi: [{ "constant": false, "inputs": [], "name": "getCandidates", "outputs": [{ "name": "", "type": "bytes32[]" }], "payable": false, "type": "function" }, { "constant": false, "inputs": [], "name": "result", "outputs": [{ "name": "", "type": "uint8[]" }], "payable": false, "type": "function" }, { "constant": false, "inputs": [{ "name": "_candidates", "type": "bytes32[]" }], "name": "addCandidates", "outputs": [], "payable": true, "type": "function" }, { "constant": false, "inputs": [{ "name": "_no", "type": "uint8" }], "name": "vote", "outputs": [], "payable": false, "type": "function" }, { "inputs": [{ "name": "_secret", "type": "bytes32" }, { "name": "_candidates", "type": "bytes32[]" }], "payable": false, "type": "constructor" }],
@@ -141,18 +141,18 @@ export class VoteService {
         web3_obj.setProvider(new web3.providers.HttpProvider('http://dudgns05072.cafe24.com:8545'));
         //var web3 = require('./web3'); //web3도 마찬가지로 따로 빼는 것을 권장
 
-
-        var contract_address = '0x247779d2c1c0cfb003d46b5a4785eaf68ccbabf9';
         //이건 투표마다 하나씩 있는거. 투표 정보 조회 API에서 contract_address 임. 
-        var account_address = '0xeb59c4f7f467bc01a1a251c12d2e304032b4fff4';
+        
         //이건 사용자의 계정주소. 이메일 인증하면 address를 줄거임. 그걸 사용해야함.
 
         var contract = web3_obj.eth.contract(contract_obj['abi']);
         var blote = contract.at(contract_address);
 
+        console.log(contract_address+" : "+account_address+" : "+checked);
+
         console.log('executing vote function....');
 
-        var voteData = blote.vote.getData(1); //이게 투표하는 부분. 0은 1번째 후보에 투표한다는거고, 1은 두번째 후보... 이런식으로 생각하면 됨
+        var voteData = blote.vote.getData(checked); //이게 투표하는 부분. 0은 1번째 후보에 투표한다는거고, 1은 두번째 후보... 이런식으로 생각하면 됨
         web3_obj.eth.sendTransaction({ to: contract_address, from: account_address, data: voteData }, function (_erro, _respo) {
             if (_erro) {
                 console.log("Error is " + _erro)
@@ -169,32 +169,18 @@ export class VoteService {
 
     }
 
-    checkVote(key:String,token:String) {
+    checkVote(key:String) {
         let url = "http://dudgns05072.cafe24.com:3000/votes/"+key;
-        let body = {
-        }
+        
         let headers = new Headers({
-            'Content-Type': 'application/json',
-            'Authorization' : 'Bearer '+token
+            'Content-Type': 'application/json'
         });
 
         let options = new RequestOptions({
             headers: headers
         });
 
-        this.http.get(url, options)
-        .map(res => res.json())
-        .subscribe(
-        res => {
-            alert("성공");
-            console.log(res);
-        },
-
-        error => {
-            alert("실패");
-            console.log("오류");
-            console.log(error);
-        }
-        );
+        return this.http.get(url, options)
+        .map(res => res.json());
     }
 }
