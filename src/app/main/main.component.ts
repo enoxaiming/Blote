@@ -32,7 +32,7 @@ export class MainComponent implements OnInit {
   }
 
   about() {
-    this.vote.checkVote("SkAiu1kKZ","eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5hbWUiOiJjaGFuZ2UiLCJpZCI6InRlc3RAZ21haWwuY29tIiwicGFzc3dvcmQiOiIxMjM0NTYiLCJvcmciOiJrZG1oIiwidmVyaWZpZWQiOmZhbHNlLCJjcmVhdGVkQXQiOiIyMDE3LTA4LTIyVDA3OjAzOjQ4LjAwMFoiLCJ1cGRhdGVkQXQiOiIyMDE3LTA4LTI0VDA3OjM0OjQ5LjAwMFoifSwiaWF0IjoxNTAzNzUwMTg0fQ.kWXfB0yXZuWYIJjluKG05PdPyrE6vuqwZCWEETgI_y8");
+    this.vote.checkVote("SkAiu1kKZ");
     //var appUriScheme = "intent://#Intent;package=blote.org.bloteAndroid;scheme=callMyApp;end;";
     //document.location.href = appUriScheme;
   }
