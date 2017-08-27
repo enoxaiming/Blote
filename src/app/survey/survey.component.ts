@@ -18,11 +18,17 @@ export class SurveyComponent implements OnInit {
   verifyHTML: String = "";
   isActivated: boolean = false;
   isAuth: boolean = false;
+  isExist: boolean = false;
+  key: String;
+  options = [];
+  model = [];
+  name = "";
+  selectedEntry;
+  contract_address: String="";
+  account_address: String="";
+  checked: number = 0;
 
   constructor(private vote: VoteService, private cookie: CookieService, private router: Router) {
-    router.events.subscribe((url: any) => console.log(url));
-
-    console.log("URL : " + router.url.slice(8));  // to print only key ex)iii
   }
 
   ngOnInit() {
@@ -31,6 +37,9 @@ export class SurveyComponent implements OnInit {
       lineColor: '#CFD8DC',
       directionX: 'center'
     });
+    console.log("do");
+    this.checkExist();
+
   }
 
   verify() {
@@ -55,7 +64,10 @@ export class SurveyComponent implements OnInit {
       res => {
         if (res.status.code == 200) {
           //Key Saved.
+          this.isAuth = true;
           this.cookie.setCookie('key', res.info.key, 1);
+          sessionStorage.setItem('account', res.account);
+          this.account_address = res.account;
           alert("인증에 성공하였습니다.");
         }
         else {
@@ -66,5 +78,54 @@ export class SurveyComponent implements OnInit {
         alert("잘못된 인증코드입니다. 다시 시도해주세요.");
       });
   }
+
+  checkExist() {
+    console.log("1");
+    this.vote.checkVote(this.router.url.slice(8)).subscribe(
+      res => {
+        if (res.status.code == 200) {
+          console.log(res);
+          this.name = res.vote.name;
+          this.isExist = true;
+          this.options = res.candidates;
+          this.contract_address = res.vote.contract_address;
+        }
+      },
+      error => {
+        alert("잘못된 인증코드입니다. 다시 시도해주세요.");
+      });
+  }
+
+  wait(ms) {
+    var start = new Date().getTime();
+    var end = start;
+    while (end < start + ms) {
+      end = new Date().getTime();
+    }
+
+
+  }
+
+  onSelectionChange(entry) {
+    this.selectedEntry = entry;
+    console.log(entry);
+    for (var i = 0; i < this.options.length; i++) {
+      if (entry == this.options[i]) {
+        this.checked = i;
+        console.log(i);
+      }
+      else {
+
+      }
+    }
+  }
+
+  doVote() {
+    //this.vote.vote(this.contract_address,this.account_address,this.checked);
+    this.vote.vote(this.contract_address,this.account_address,this.checked);
+  }
+
+
+
 
 }

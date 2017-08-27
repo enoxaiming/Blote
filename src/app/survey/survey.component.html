@@ -2,7 +2,7 @@
     <div id="empty">
     </div>
 
-    <div class="card">
+    <div *ngIf="isExist" class="card">
         <h1 class="logo" href="#"><b>Blote</b>.me</h1>
         <div *ngIf="!isAuth">
             <h5 class="contents"> 투표를 위한 인증을 진행합니다.</h5>
@@ -26,11 +26,22 @@
                 <label for="name-input">인증코드를 작성해주세요. <strong class="text-danger">*</strong></label>
                 <input type="text" class="form-control input-lg" name="name" id="name-input" placeholder="인증코드를 입력하세요" [(ngModel)]="code"
                     required>
-                <button class="btn submit-btn btn-primary btn-lg btn-block" (click)="this.vote.emailVerify(this.email,this.code);">인증하기</button>
+                <button class="btn submit-btn btn-primary btn-lg btn-block" (click)="verifyCode();">인증하기</button>
             </div>
         </div>
         <div *ngIf="isAuth">
-            
+            <div class="form-group">
+                <label for="options">{{name}}</label>
+                <div *ngFor="let option of options">
+                    <label>
+                        <input type="radio"
+                               name="options"
+                               (change)="onSelectionChange(option)"/>
+                        {{option.id}}
+                    </label>
+                </div>
+                <button class="btn submit-btn btn-primary btn-lg btn-block" (click)="doVote();">전송하기</button>
+            </div>
         </div>
     </div>
 </div>
